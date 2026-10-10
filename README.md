@@ -1,5 +1,3 @@
-# vaii-semestralka
-
 ## 33 RPM
 
 ## Artem Stykharev
