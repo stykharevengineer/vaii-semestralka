@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abbey Road – 33 RPM</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container header-inner">
+        <a href="index.html" class="logo">
+            <span class="logo-disc"></span>
+            <span class="logo-text">33 RPM</span>
+        </a>
+
+        <input type="checkbox" id="menu-toggle" class="menu-toggle">
+        <label for="menu-toggle" class="menu-icon" aria-label="Otvoriť menu">
+            <span></span><span></span><span></span>
+        </label>
+
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Domov</a></li>
+                <li><a href="detail.html" class="active">Katalóg</a></li>
+                <li><a href="#">Interpreti</a></li>
+            </ul>
+            <div class="user-box">
+                <span class="username">👤 m_duracik</span>
+                <a href="#" class="btn btn-outline">Odhlásiť sa</a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+
+    <nav class="breadcrumb" aria-label="Navigačná cesta">
+        <a href="#">Katalóg</a> › <a href="#">Rock</a> › <span>Abbey Road</span>
+    </nav>
+
+    <article class="record">
+        <img src="img/cover.svg" alt="Obal platne Abbey Road" class="record-cover">
+
+        <div class="record-info">
+            <h1>Abbey Road</h1>
+            <a href="#" class="record-artist">The Beatles</a>
+
+            <div class="tags">
+                <a href="#" class="tag">Rock</a>
+                <span class="tag">1969</span>
+            </div>
+
+            <p class="rating">
+                <span class="stars">★★★★☆</span>
+                <strong>4,3</strong>
+                <span class="muted">(3 recenzie)</span>
+            </p>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Integer
+                posuere erat a ante venenatis dapibus posuere velit aliquet. Cras mattis consectetur
+                purus sit amet fermentum. Donec ullamcorper nulla non metus auctor fringilla.</p>
+            <p>Vestibulum id ligula porta felis euismod semper. Maecenas sed diam eget risus varius
+                blandit sit amet non magna.</p>
+        </div>
+    </article>
+
+    <section class="reviews">
+
+        <form class="review-form card" action="#" method="post">
+            <h2>Pridať recenziu</h2>
+
+            <fieldset class="rating-input">
+                <legend>Hodnotenie</legend>
+                <label><input type="radio" name="rating" value="1"> 1 ★</label>
+                <label><input type="radio" name="rating" value="2"> 2 ★</label>
+                <label><input type="radio" name="rating" value="3"> 3 ★</label>
+                <label><input type="radio" name="rating" value="4"> 4 ★</label>
+                <label><input type="radio" name="rating" value="5"> 5 ★</label>
+            </fieldset>
+
+            <label for="review-text" class="form-label">Text recenzie</label>
+            <textarea id="review-text" name="text" rows="5" maxlength="1000"
+                      placeholder="Napíšte, čo si o platni myslíte…"></textarea>
+            <p class="muted char-count">0 / 1000</p>
+
+            <button type="submit" class="btn btn-primary">Odoslať recenziu</button>
+        </form>
+
+        <div class="review-list">
+            <div class="review-list-head">
+                <h2>Recenzie (3)</h2>
+                <select aria-label="Zoradiť recenzie">
+                    <option>Zoradiť: najnovšie</option>
+                    <option>Zoradiť: najstaršie</option>
+                    <option>Zoradiť: najlepšie hodnotenie</option>
+                </select>
+            </div>
+
+            <article class="review card">
+                <header class="review-head">
+                    <div>
+                        <strong>mr_mesko</strong>
+                        <span class="muted">· 12. 10. 2026</span>
+                        <span class="stars">★★★★★</span>
+                    </div>
+                    <div class="review-actions">
+                        <button type="button" class="btn btn-small btn-outline">Upraviť</button>
+                        <button type="button" class="btn btn-small btn-danger">Zmazať</button>
+                    </div>
+                </header>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lacinia bibendum
+                    nulla sed consectetur. Curabitur blandit tempus porttitor.</p>
+            </article>
+
+            <article class="review card">
+                <header class="review-head">
+                    <div>
+                        <strong>stykharev</strong>
+                        <span class="muted">· 3. 10. 2026</span>
+                        <span class="stars">★★★★☆</span>
+                    </div>
+                </header>
+                <p>Etiam porta sem malesuada magna mollis euismod. Nullam quis risus eget urna mollis
+                    ornare vel eu leo.</p>
+            </article>
+
+            <article class="review card">
+                <header class="review-head">
+                    <div>
+                        <strong>lucia_novak</strong>
+                        <span class="muted">· 28. 9. 2026</span>
+                        <span class="stars">★★★★☆</span>
+                    </div>
+                </header>
+                <p>Maecenas faucibus mollis interdum. Donec sed odio dui.</p>
+            </article>
+        </div>
+
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="container footer-inner">
+        <p>&copy; 2026 33 RPM – katalóg vinylových platní</p>
+        <p><a href="#">O projekte</a> · <a href="#">Kontakt</a></p>
+    </div>
+</footer>
+
+</body>
+</html>
