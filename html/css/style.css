@@ -1,3 +1,6 @@
+/* Štýly aplikácie 33 RPM (vygenerované pomocou AI) */
+
+/* ===== Premenné (farby) ===== */
 :root {
     --bg: #f6f3ee;
     --surface: #ffffff;
@@ -9,6 +12,7 @@
     --danger: #c0392b;
 }
 
+/* ===== Základ ===== */
 * {
     box-sizing: border-box;
 }
@@ -19,6 +23,7 @@ body {
     line-height: 1.5;
     color: var(--text);
     background: var(--bg);
+    /* pätička bude vždy na spodku stránky */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -56,6 +61,7 @@ h1, h2 {
     font-size: 0.9rem;
 }
 
+/* ===== Tlačidlá ===== */
 .btn {
     display: inline-block;
     padding: 8px 16px;
@@ -100,6 +106,7 @@ h1, h2 {
     font-size: 0.8rem;
 }
 
+/* ===== Hlavička ===== */
 .site-header {
     background: var(--dark);
     color: #fff;
@@ -122,6 +129,7 @@ h1, h2 {
     font-size: 1.4rem;
 }
 
+/* logo ako malá platňa */
 .logo-disc {
     width: 36px;
     height: 36px;
@@ -175,11 +183,13 @@ h1, h2 {
     color: var(--dark);
 }
 
+/* hamburger je na desktope skrytý */
 .menu-toggle,
 .menu-icon {
     display: none;
 }
 
+/* ===== Pätička ===== */
 .site-footer {
     background: var(--dark);
     color: #bbb;
@@ -197,6 +207,7 @@ h1, h2 {
     gap: 8px;
 }
 
+/* ===== Placeholder (index.html) ===== */
 .placeholder {
     background: var(--surface);
     border: 2px dashed var(--border);
@@ -206,6 +217,7 @@ h1, h2 {
     min-height: 400px;
 }
 
+/* ===== Karta ===== */
 .card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -213,6 +225,7 @@ h1, h2 {
     padding: 16px 20px;
 }
 
+/* ===== Detail platne ===== */
 .breadcrumb {
     font-size: 0.9rem;
     color: var(--muted);
@@ -265,6 +278,7 @@ h1, h2 {
     font-size: 1.3rem;
 }
 
+/* ===== Recenzie ===== */
 .reviews {
     display: grid;
     grid-template-columns: 340px 1fr;
@@ -360,18 +374,22 @@ h1, h2 {
     gap: 6px;
 }
 
+/* ===== Tablet (do 900px) ===== */
 @media (max-width: 900px) {
     .record {
         grid-template-columns: 240px 1fr;
         gap: 24px;
     }
 
+    /* formulár a zoznam recenzií pod sebou */
     .reviews {
         grid-template-columns: 1fr;
     }
 }
 
+/* ===== Mobil (do 700px) ===== */
 @media (max-width: 700px) {
+    /* zobrazí sa hamburger */
     .menu-icon {
         display: flex;
         flex-direction: column;
@@ -387,6 +405,7 @@ h1, h2 {
         border-radius: 2px;
     }
 
+    /* menu je skryté, kým nie je checkbox zaškrtnutý */
     .main-nav {
         display: none;
         width: 100%;
@@ -405,6 +424,7 @@ h1, h2 {
         gap: 12px;
     }
 
+    /* obal platne nad informáciami */
     .record {
         grid-template-columns: 1fr;
     }

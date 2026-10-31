@@ -1,11 +1,13 @@
-## 33 RPM
+# 33 RPM
 
-## Artem Stykharev
+Meno a priezvisko študenta
 
-## STUD.SKUPINA - 5ZYI36
+Študijná skupina
 
 ## Stručný opis projektu
-33 RPM je webová aplikácia pre milovníkov vinylových platní. Slúži ako online katalóg, v ktorom si návštevníci môžu prezerať platne, vyhľadávať ich podľa názvu alebo interpreta a filtrovať podľa hudobného žánru. Pri každej platni nájdu obal, rok vydania, popis a hodnotenia od ostatných používateľov. Aplikácia je určená zberateľom vinylov a ľuďom, ktorí hľadajú inšpiráciu, čo si vypočuť alebo kúpiť. 
+**33 RPM** je webová aplikácia pre milovníkov vinylových platní. Slúži ako online katalóg, v ktorom si návštevníci môžu prezerať platne, vyhľadávať ich podľa názvu alebo interpreta a filtrovať podľa hudobného žánru. Pri každej platni nájdu obal, rok vydania, popis a hodnotenia od ostatných používateľov.
+
+Aplikácia rieši problém roztrúsených informácií o vinylových platniach – na jednom mieste spája katalóg platní, informácie o interpretoch a recenzie komunity. Je určená zberateľom vinylov a ľuďom, ktorí hľadajú inšpiráciu, čo si vypočuť alebo kúpiť. Registrovaní používatelia môžu platne hodnotiť a písať recenzie, správca sa stará o obsah katalógu.
 
 ## Role v projekte
 - **Návštevník (neprihlásený)** – môže prezerať katalóg platní, detail platne, zoznam interpretov a čítať recenzie. Nemôže pridávať žiadny obsah.
@@ -13,6 +15,7 @@
 - **Správca (admin)** – zodpovedá za obsah katalógu. Môže pridávať, upravovať a mazať platne, interpretov a žánre, nahrávať obaly platní a fotografie interpretov a mazať akúkoľvek recenziu (napr. nevhodnú).
 
 ## Prípady použitia podľa rolí
+
 **Návštevník**
 - návštevník si prezrie zoznam najnovších a najlepšie hodnotených platní na úvodnej stránke,
 - návštevník vyhľadá platňu podľa názvu alebo interpreta,
@@ -27,7 +30,7 @@
 - používateľ zmaže svoju recenziu,
 - používateľ sa odhlási.
 
-**Správca(admin)**
+**Správca**
 - správca pridá novú platňu a nahrá jej obal,
 - správca upraví údaje platne alebo vymení obal,
 - správca zmaže platňu (spolu s jej obalom zo servera),
@@ -36,6 +39,7 @@
 - správca zmaže nevhodnú recenziu ľubovoľného používateľa.
 
 ## Plánované entity
+
 **Používateľ (User)** – uchováva účty používateľov aplikácie. Obsahuje používateľské meno, e-mail, zahashované heslo a rolu (používateľ alebo správca). Používateľ môže napísať viacero recenzií.
 
 **Interpret (Artist)** – predstavuje interpreta alebo kapelu. Obsahuje meno, krajinu, krátky životopis a fotografiu. Interpret môže mať viacero platní.
@@ -46,11 +50,23 @@
 
 **Recenzia (Review)** – hodnotenie platne od používateľa. Obsahuje hodnotenie od 1 do 5, text recenzie a dátum vytvorenia. Každá recenzia patrí jednej platni a jednému používateľovi.
 
+Rola používateľa je uložená ako stĺpec v tabuľke používateľov (nie samostatné tabuľky pre každú rolu). Obrázky sa ukladajú na disk servera a v databáze je uložená iba cesta k súboru.
+
 ## Vzťahy medzi entitami
 - **Artist 1 : N Record** – jeden interpret môže mať viac platní, každá platňa patrí práve jednému interpretovi.
 - **Genre 1 : N Record** – jeden žáner obsahuje viac platní, každá platňa má jeden žáner.
 - **Record 1 : N Review** – k jednej platni môže byť viac recenzií, recenzia patrí jednej platni.
 - **User 1 : N Review** – jeden používateľ môže napísať viac recenzií, každá recenzia má jedného autora.
+
+Entita Review tak prepája používateľov a platne – v podstate realizuje vzťah **M:N medzi User a Record** (používateľ hodnotí veľa platní, platňa má hodnotenia od veľa používateľov), pričom nesie vlastné údaje (hodnotenie a text).
+
+```mermaid
+erDiagram
+    ARTIST ||--o{ RECORD : "má"
+    GENRE  ||--o{ RECORD : "obsahuje"
+    RECORD ||--o{ REVIEW : "má"
+    USER   ||--o{ REVIEW : "píše"
+```
 
 ## Hlavné stránky aplikácie
 1. **Úvodná stránka** – najnovšie pridané a najlepšie hodnotené platne.
@@ -63,6 +79,7 @@
 8. **Prihlásenie a registrácia** – formuláre na prihlásenie a vytvorenie účtu.
 
 ## Rozdelenie funkcionality
+
 **Základné funkcie** (minimum na úspešné dokončenie projektu)
 - registrácia, prihlásenie a odhlásenie, heslá uložené ako hash,
 - dve role (používateľ, správca) a kontrola oprávnení na strane servera,
@@ -83,3 +100,21 @@
 - stránkovanie katalógu cez AJAX,
 - priemerné hodnotenie platne zobrazené hviezdičkami,
 - zoradenie katalógu (podľa roku, hodnotenia, názvu).
+
+## Spustenie aplikácie
+Aplikácia je postavená na frameworku [Vaííčko](https://github.com/thevajko/vaiicko).
+
+**Pomocou Dockeru (odporúčané)**
+1. V priečinku `docker` spustite príkaz `docker compose up`.
+2. Aplikácia je dostupná na adrese [http://localhost/](http://localhost/).
+
+**Bez Dockeru (vstavaný PHP server, PHP 8.3+)**
+1. V koreňovom priečinku projektu spustite `php -S localhost:8000 -t public`.
+2. Aplikácia je dostupná na adrese [http://localhost:8000/](http://localhost:8000/).
+
+**Implementované stránky**
+- Úvodná stránka – `?c=home`
+- Detail platne – `?c=record&a=detail`
+- Administrácia (po prihlásení, testovací účet `admin` / `admin`) – `?c=admin`
+
+Statická HTML/CSS verzia z úlohy 4 je ponechaná v priečinku `html`.
